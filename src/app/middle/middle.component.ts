@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { des } from './des';
 
 @Component({
   selector: 'app-middle',
@@ -8,19 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class MiddleComponent implements OnInit {
   plainText: string;
   key: any;
+  text: string;
 
   constructor() {
     this.key = 'AABB09182736CCDD';
-    this.plainText = this.hex2bin(this.key);
+    this.plainText = '123456ABCD132536';
+    this.text = des(this.plainText, this.key, true);
   }
 
   ngOnInit(): void {
   }
-
-  hex2bin(hex: string): string {
-    hex = '0x' + hex;
-    hex = BigInt(hex).toString(2);
-    return hex;
-  }
-
 }
